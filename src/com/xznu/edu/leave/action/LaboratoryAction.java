@@ -200,6 +200,8 @@ public class LaboratoryAction extends ActionSupport implements ModelDriven<Labor
         return SUCCESS;
     }
 
+    /*删除
+     */
     public void delete() throws IOException {
         laboratory.setIsDelete(1);
         laboratoryService.updates(laboratory);

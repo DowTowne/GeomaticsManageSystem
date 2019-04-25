@@ -149,9 +149,9 @@
 		</div>
 		<!-- 分页结束 -->
 	</div>
-	<!--添加用户图层-->
+	<!--添加设备图层-->
 	<form action="equipment_save.do" method="post"
-		class="form form-horizontal" id="form-user-add">
+		class="form form-horizontal" id="form-equipment-add">
 		<div class="add_menber" id="add_menber_style" style="display: none">
 			<ul>
 				<li><label class="label_name" style="width: 130px">设备型号：</label>
@@ -206,11 +206,11 @@
 </body>
 </html>
 <script>
-    /*用户-添加*/
+    /*设备-添加*/
     $('#member_add').on('click', function(){
         layer.open({
             type: 1,
-            title: '添加用户',
+            title: '添加设备',
             maxmin: true,
             shadeClose: true, //点击遮罩关闭层
             area : ['800px' , '400px'],
@@ -232,7 +232,7 @@
                 if(num>0){
                     return false;
                 }else{
-                    AJAX("equipment_save.do", "添加成功", "form-user-add", 2);
+                    AJAX("equipment_save.do", "添加成功", "form-equipment-add", 2);
                 }
             }
         });
