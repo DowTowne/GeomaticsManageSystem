@@ -26,13 +26,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller("surveyingZoneAction")
+@Controller("surveyingzoneAction")
 @Scope("prototype")
 public class SurveyingZoneAction extends ActionSupport implements ModelDriven<SurveyingZone> {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private RoleService roleService;
+    
     @Autowired
     private SurveyingZoneService surveyingZoneService;
     
@@ -106,19 +103,6 @@ public class SurveyingZoneAction extends ActionSupport implements ModelDriven<Su
 
 
     /**
-     * 审核
-     *
-     * @return
-     */
-    public void updateSh() throws IOException {
-        user.setIsSh(1);
-        userService.updates(user);
-        map.put("flag", true);
-        map.put("url", "user_list.do");
-        JsonUtils.toJson(map);
-    }
-
-    /**
      * 更新
      *
      * @return
@@ -126,7 +110,7 @@ public class SurveyingZoneAction extends ActionSupport implements ModelDriven<Su
     public void update() throws IOException {
     	surveyingZoneService.updates(surveyingZone);
         map.put("flag", true);
-        map.put("url", "surveyingZone_list.do");
+        map.put("url", "surveyingzone_list.do");
         JsonUtils.toJson(map);
     }
 
@@ -138,7 +122,7 @@ public class SurveyingZoneAction extends ActionSupport implements ModelDriven<Su
     public String save() throws IOException {    	
     	surveyingZoneService.save(surveyingZone);
         map.put("flag", true);
-        map.put("url", "surveyingZone_list.do");
+        map.put("url", "surveyingzone_list.do");
         JsonUtils.toJson(map);
         return SUCCESS;
     }
@@ -149,7 +133,7 @@ public class SurveyingZoneAction extends ActionSupport implements ModelDriven<Su
     	surveyingZone.setIsDelete(1);
     	surveyingZoneService.updates(surveyingZone);
         map.put("flag", true);
-        map.put("url", "surveyingZone_list.do");
+        map.put("url", "surveyingzone_list.do");
         JsonUtils.toJson(map);
     }
 

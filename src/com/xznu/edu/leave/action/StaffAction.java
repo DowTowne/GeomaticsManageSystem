@@ -10,24 +10,12 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.xznu.edu.leave.model.*;
 import com.xznu.edu.leave.service.*;
 import com.xznu.edu.leave.utils.*;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.math.BigDecimal;
-import java.net.URLEncoder;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller("staffAction")
@@ -40,11 +28,12 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     @Autowired
     private StaffService staffService;    
     
-    private Staff staff;
-    private Map<String, Object> map = new HashMap();
+    private Staff staff;   
     
     private Integer staffId;
 
+    private Map<String, Object> map = new HashMap();
+    
     /**
      * list
      *
@@ -71,33 +60,7 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
         return SUCCESS;
     }
 
-    /**
-     * list
-     *
-     * @return
-     */
-    public String dataList() {
-        User user1 = UserUtils.getUser();
-        if (user1 == null || user1.getId() == null) {
-            ActionContext.getContext().put("login", 1);
-            return SUCCESS;
-        }
-        Pager<Staff> pagers = null;
-        Role role = user1.getRole();
-        if (role.getEnName().equals("admin")) {
-            pagers = staffService.getList(staff);
-            ActionContext.getContext().put("staffPagers", pagers);
-            ActionContext.getContext().put("user", user1);
-            
-            putSurveyingZonePagersIntoContext();
-            
-            putStaffStatusPagersIntoContext();
-            
-            ActionContext.getContext().put("bean", staff);
-
-        }
-        return SUCCESS;
-    }
+    
 
 	/**
 	 * 
@@ -146,17 +109,7 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     }
   
 
-    /**
-     * 更新
-     *
-     * @return
-     */
-    public void update() throws IOException {
-        staffService.updates(staff);
-        map.put("flag", true);
-        map.put("url", "staff_dataList.do");
-        JsonUtils.toJson(map);
-    }  
+    
 
 
     /**

@@ -377,7 +377,7 @@
 									<ul class="submenu">
 										<c:if test="${role == 'admin'}">
 											<li class="home">
-												<a href="javascript:void(0)" name="surveyingZone_list.do" title="测区列表" class="iframeurl">
+												<a href="javascript:void(0)" name="surveyingzone_list.do" title="测区列表" class="iframeurl">
 													<i class="icon-double-angle-right"></i>测区管理</a>
 											</li>
 										</c:if>

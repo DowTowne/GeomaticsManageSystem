@@ -48,8 +48,7 @@
                                                                     class="text_add" style=" width:200px"/></li>
                         <li><label class="l_f">测区</label><input name="bj" type="text" value="${bean.surveyingZone.name}"
                                                                     class="text_add" style=" width:200px"/></li>
-                        <li><label class="l_f">工作状态</label><input name="staffStatus" type="text" value="${bean.staffStatus.name}"
-                                                                    class="text_add" style=" width:200px"/></li>
+                        
                         <li style="width:90px;">
                             <button type="submit" class="btn_search"><i class="icon-search"></i>查询</button>
                         </li>
@@ -87,7 +86,7 @@
                         <td class="hidden-480">${c.surveyingZone.name}</td>
                         <td class="hidden-480">${c.phone}</td>
                         <td class="hidden-480">${c.staffStatus.name}</td>
-                        <td class="hidden-480">${c.sh}</td>
+                       
                         <td class="hidden-480">
                             <c:if test="${c.isSh == 0}"><span style="color: red">未审核</span></c:if>
                             <c:if test="${c.isSh == 1}"><span style="color: blue">已审核</span></c:if>
@@ -119,7 +118,7 @@
                 <pg:param name="surveyingZone" value="${bean.surveyingZone.name}"/>
                 <pg:param name="phone" value="${bean.phone}"/>
                 <pg:param name="staffStatus" value="${bean.staffStatus.name}"/>
-                <pg:param name="sh" value="${bean.sh}"/>
+                <pg:param name="isSh" value="${bean.isSh}"/>
                 <pg:last>
                     共${pagers.total}记录,共${pageNumber}页,
                 </pg:last>

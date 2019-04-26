@@ -60,7 +60,7 @@
 <div class="page-content clearfix">
     <div id="Member_Ratings">
         <div class="d_Confirm_Order_style">
-            <form method="post" action="surveyingZone_list.do">
+            <form method="post" action="surveyingzone_list.do">
             <div class="search_style">
                 <ul class="search_content clearfix">
                     <li><label class="l_f">测区名称</label><input name="name" type="text" value="${surveyingZone.name}" class="text_add"  style=" width:200px"/></li>
@@ -81,40 +81,43 @@
                     <thead>
                     <tr>
                         <th width="100">测区名称</th>
-                        <th width="80">测区负责人</th>
-                        <th width="120">测区副负责人</th>
+                        <th width="100">测区负责人</th>        
+                        <th width="150">测区副负责人</th>                
                         <th width="120">地点</th>
                         <th width="120">分管队长</th>
                         <th width="250">备注</th>
+                        <th width="150">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                      <c:forEach items="${pagers.datas}" var="c" varStatus="l">
-                        <tr>
-                        <td><u style="cursor:pointer" class="text-primary" >${c.name}</u></td>
-                        <td>${c.director.name}</td>
-                        <td>${c.viceDirector.name}</td>
-                        <td>${c.address}</td>
-                        <td>${c.chargedCaptain.name}</td>
-                        <td>${c.bz}</td>
-                        <td class="td-manage">
-                            <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>--%>
-                            <a title="编辑" onclick="edit(${c.id})" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>
-                            <a title="删除" href="javascript:;"  onclick="member_del(${c.id})" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-                        </td>
-                    </tr>
-                          </c:forEach>
-                    </tbody>
+							<c:forEach items="${pagers.datas}" var="c" varStatus="l">
+								<tr>
+									<td><u style="cursor: pointer" class="text-primary">${c.name}</u></td>
+									<td>${c.director.name}</td>	
+									<td>${c.viceDirector.name}</td>										
+									<td>${c.address}</td>
+									<td>${c.chargedCaptain.name}</td>
+									<td>${c.bz}</td>
+									<td class="td-manage"><a title="编辑"
+										onclick="edit(${c.id})" href="javascript:;"
+										class="btn btn-xs btn-info"><i
+											class="icon-edit bigger-120"></i></a> <a title="删除"
+										href="javascript:;" onclick="member_del(${c.id})"
+										class="btn btn-xs btn-warning"><i
+											class="icon-trash  bigger-120"></i></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- 分页开始 -->
     <div class="pagelist">
-        <pg:pager url="${ctx}/surveyingZone_list.do" maxIndexPages="5" items="${pagers.total}" maxPageItems="15"
+        <pg:pager url="${ctx}/surveyingzone_list.do" maxIndexPages="5" items="${pagers.total}" maxPageItems="15"
                   export="curPage=pageNumber">
             <pg:param name="name" value="${surveyingZone.name}"/>
-            <pg:param name="fzr" value="${surveyingZone.director.name}"/>
+            <pg:param name="director" value="${surveyingZone.director.name}"/>
             <pg:last>
                 共${pagers.total}记录,共${pageNumber}页,
             </pg:last>
@@ -155,7 +158,7 @@
 </div>
 
 <!--添加用户图层-->
-<form action="surveyingZone_save.do" method="post" class="form form-horizontal" id="form-surveyingZone-add" >
+<form action="surveyingzone_save.do" method="post" class="form form-horizontal" id="form-surveyingZone-add" >
 <div class="add_menber" id="add_menber_style" style="display:none">
     <ul>
         <li><label class="label_name" style="width: 130px">测区名称：</label>
@@ -166,7 +169,7 @@
         <li>
             <label class="label_name"style="width: 130px">测区负责人：</label>
             <span class="add_name">
-            <input name="fzr" type="text" id="负责人" class="text_add"/>
+            <input name="director" type="text" id="负责人" class="text_add"/>
         </span>
         </li>
         <li><label class="label_name" style="width: 130px">测区副负责人：</label>
@@ -244,7 +247,7 @@
         layer.open({
             type: 2,
             area: ['910px', '500px'],
-            content: ['surveyingZone_edit.do?surveyingZoneId=' + id, 'no']  //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            content: ['surveyingzone_edit.do?surveyingZoneId=' + id, 'no']  //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
         });
     }
 
@@ -255,7 +258,7 @@
             $.ajax({
                 cache: false,
                 type: "post",
-                url: "surveyingZone_delete.do",
+                url: "surveyingzone_delete.do",
                 data:{id: id},// 你的formid
                 async: false,
                 success: function(data){

@@ -77,6 +77,7 @@
 								<th width="120">设备序列号</th>
 								<th width="120">设备备注</th>
 								<th width="250">操作</th>
+								<th width="80">实验室</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -96,6 +97,7 @@
 										class="btn btn-xs btn-warning"><i
 											class="icon-trash  bigger-120"></i></a>
 									</td>
+									<td>${c.laboratory.name}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
